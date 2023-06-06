@@ -1,0 +1,157 @@
+What will you learn?
+
+1. Tools Needed
+
+2. What are Cookies?
+
+3. Cookies Manipulation (Read, Change, and Delete)
+
+4. A Function to Set a Cookie 
+
+#########################################
+
+1. Tools Needed
+Cookie-Editor Extension
+
+-----------------------------
+What are Cookies?
+
+- Cookies are data that browsers store in small text files on your computer.
+
+- Cookies were invented to solve the problem of "how to remember information about the user?". 
+
+- When you sign in to a web application like CyberTalents, you won’t need to type your email and password again next time because it stores your credentials in the cookies. 
+
+- Cookies are saved in name-value pairs like:
+  
+   username = user 
+
+- When a browser requests a web page from a server, cookies belonging to the page are added to the request. 
+   
+- This way the server gets the necessary data to "remember" information about users. 
+
+-----------------------------
+
+3. Cookies Manipulation (Read, Change, and Delete)
+
+- Create a Cookie with JavaScript
+
+JavaScript can create, read, and delete cookies with the document.cookie property.
+
+With JavaScript, a cookie can be created like this:
+
+==============
+code : make cookie
+document.cookie = "username = user";
+==============
+
+You can also add an expiry date (in UTC time). By default, the cookie is deleted when the browser is closed:
+
+==============
+code : add the expire time 
+document.cookie = "username = user ; expire=thu,18 Dec 2013 12:00:00 UTC";
+==============
+
+
+- With a path parameter, you can tell the browser what path the cookie belongs to. 
+- By default, the cookie belongs to the current page
+
+
+1- The url path prefix must be absolute. 
+2- It makes the cookie accessible for pages under that path. By default, it’s the current path.
+
+3- If a cookie is set with path=/admin, it’s visible at pages /admin and /admin/something, but not at /home or /adminpage.
+
+4- Usually, we should set path to the root: path=/ to make the cookie accessible from all website pages.
+
+==============
+code : add the expire time 
+document.cookie = "username = user ; expire=thu,18 Dec 2013 12:00:00 UTC;path=/";
+==============
+
+
+=> Read a Cookie with JavaScript
+
+
+==============
+code : read cookie 
+var cookie = document.cookie;
+==============
+
+
+
+=> Change a Cookie with JavaScript
+
+With JavaScript, you can change a cookie the same way as you create it:
+==============
+code : add the expire time 
+document.cookie = "username = test ; expire=thu,18 Dec 2013 12:00:00 UTC;path=/";
+==============
+
+
+
+=> Delete a Cookie with JavaScript
+
+Deleting a cookie is very simple. You don't have to specify a cookie value when you delete a cookie. 
+
+Just set the expires parameter to a passed date:
+
+
+==============
+code : add the expire time 
+document.cookie = "username = test ; expire=thu,18 Dec 2013 12:00:00 UTC;path=/";
+==============
+
+-----------------------------
+ A Function to Set a Cookie
+
+First, we create a function that stores the name of the visitor in a cookie variable:
+==============
+
+code : function that set a cookie
+function setCookie(name, value, expireDays) {
+  var date = new Date();
+  date.setTime(date.getTime() + (expireDays * 24 * 60 * 60 * 1000));
+  var expires = "expires=" + date.toUTCString();
+  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+==============
+
+
+
+to solve the challenge 
+
+- first do inspect then u can find the user-name and password for support and the sign in 
+
+- then  go to the storage and change the cookie of the role value and again sent the request . 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

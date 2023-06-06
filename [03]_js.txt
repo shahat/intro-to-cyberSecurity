@@ -1,0 +1,48 @@
+In the penetration testing field, sometimes you need to have good knowledge about javascript to be able to analyze the web application code and figure out one of the client-side vulnerabilities that rely on javascript (e.g: XSS, CSRF)
+
+
+However, when testing for the DOM XSS, you should trace the sources and sinks in the page.
+
+
+Sources: Where the input data is submitted  (e.g: document.URL)
+
+Sinks: Where the input data is executed or printed. (e.g: eval() which executes any argument that is passed to it as JavaScript).
+
+
+
+XSS is not the only vulnerability that relies on JavaScript, it can be used in other vulnerabilities like CSRF.  
+
+what you should know about using JavaScript in web security testing is that your target will always be executing the injected JS to get some sensitive data like user session cookies or to force the user to do an undesirable act by sending them malicious links containing malicious JS code.
+
+
+
+
+ 
+
+
+after translation the code that i find into the inspect i find that user name and the password is compared to the values in this array so the user name and the password will be 
+
+userName : "Cyber-Talent"
+pass : "Cyber-Talent" 
+
+then u can find the flag 
+
+var _0xae5b = [
+  "value",
+  "user",
+  "getElementById",
+  "pass",
+  "Cyber-Talent",
+  "            Congratz \n\n",
+  "wrong Password",
+];
+
+function check() {
+  var _0xeb80x2 = document.getElementById("user").value;
+  var _0xeb80x3 = document.getElementById("pass").value;
+  if (_0xeb80x2 == _0xae5b[4] && _0xeb80x3 == _0xae5b[4]) {
+    alert(_0xae5b[5]);
+  } else {
+    alert(_0xae5b[6]);
+  }
+}
